@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { setPlaying } from '../../lib/store'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -74,30 +75,29 @@ export default function HeroSection() {
       {/* Left content */}
       <div style={{ flex: '1 1 auto', maxWidth: '580px', position: 'relative', zIndex: 2 }}>
         {/* Badge */}
+        {/* this is for a small content bubble right above the left heading, I have removed it for now */}
         <div ref={badgeRef} style={{
           display: 'inline-flex', alignItems: 'center', gap: '8px',
-          background: 'rgba(0,130,170,0.12)',
-          border: '1px solid rgba(0,212,255,0.3)',
           borderRadius: '100px', padding: '6px 16px',
           marginBottom: '28px',
-          color: '#00d4ff', fontSize: '11px',
+          color: '#00c4e0', fontSize: '11px',
           fontFamily: "'Courier New', monospace",
           letterSpacing: '0.12em', textTransform: 'uppercase',
         }}>
-          <span style={{
+          {/* <span style={{
             width: '6px', height: '6px', borderRadius: '50%',
-            background: '#00d4ff', display: 'block',
-            boxShadow: '0 0 8px #00d4ff',
+            background: '#00c4e0', display: 'block',
+            boxShadow: '0 0 8px #00c4e0',
             animation: 'acm-pulse 1.8s ease-in-out infinite',
           }} />
-          IGDTUW · Est. 2013
+          IGDTUW · Est. 2013 */}
         </div>
 
         {/* Headline */}
         <h1 ref={headRef} style={{
           fontSize: 'clamp(52px, 8vw, 108px)',
           fontWeight: 800, lineHeight: 0.96,
-          letterSpacing: '-0.045em', color: '#e8f4f8',
+          letterSpacing: '-0.045em', color: '#ffffff',
           margin: '0 0 22px',
         }}>
           ACM<br />
@@ -109,12 +109,11 @@ export default function HeroSection() {
         {/* Subtitle */}
         <p ref={subRef} style={{
           fontSize: 'clamp(14px, 1.6vw, 18px)',
-          color: 'rgba(232,244,248,0.65)',
+          color: 'rgba(255,255,255,0.55)',
           lineHeight: 1.75, margin: '0 0 38px',
           maxWidth: '460px',
         }}>
-          One of IGDTUW's oldest tech clubs — fostering a vibrant community
-          of innovators, builders, and curious minds pushing the boundaries of technology.
+          One of IGDTUW's oldest tech clubs, fostering a community of like minded geeks!
         </p>
 
         {/* CTA Buttons */}
@@ -134,7 +133,7 @@ export default function HeroSection() {
             }}
             onMouseEnter={e => {
               e.currentTarget.style.transform = 'translateY(-2px)'
-              e.currentTarget.style.boxShadow = '0 0 40px rgba(0,212,255,0.55), 0 8px 24px rgba(0,0,0,0.3)'
+              e.currentTarget.style.boxShadow = '0 0 40px rgba(0,196,224,0.55), 0 8px 24px rgba(0,0,0,0.3)'
             }}
             onMouseLeave={e => {
               e.currentTarget.style.transform = 'translateY(0)'
@@ -149,7 +148,7 @@ export default function HeroSection() {
             style={{
               display: 'inline-flex', alignItems: 'center', gap: '8px',
               background: 'rgba(255,255,255,0.04)',
-              color: '#e8f4f8', textDecoration: 'none',
+              color: '#ffffff', textDecoration: 'none',
               padding: '14px 30px', borderRadius: '10px',
               fontWeight: 600, fontSize: '13px', letterSpacing: '0.04em',
               border: '1px solid rgba(255,255,255,0.1)',
@@ -157,7 +156,7 @@ export default function HeroSection() {
               transition: 'all 0.2s ease',
             }}
             onMouseEnter={e => {
-              e.currentTarget.style.borderColor = 'rgba(0,212,255,0.4)'
+              e.currentTarget.style.borderColor = 'rgba(0,196,224,0.4)'
               e.currentTarget.style.background = 'rgba(0,130,170,0.08)'
               e.currentTarget.style.transform = 'translateY(-2px)'
             }}
@@ -180,16 +179,16 @@ export default function HeroSection() {
             borderTop: '1px solid rgba(255,255,255,0.07)',
           }}
         >
-          {stats.map(({ value, label }) => (
+          {/* {stats.map(({ value, label }) => (
             <div key={label}>
               <div style={{
                 fontSize: 'clamp(26px, 3.5vw, 38px)', fontWeight: 800,
-                color: '#00d4ff', lineHeight: 1,
+                color: '#00c4e0', lineHeight: 1,
               }}>
                 {value}
               </div>
               <div style={{
-                fontSize: '11px', color: 'rgba(232,244,248,0.45)',
+                fontSize: '11px', color: 'rgba(255,255,255,0.45)',
                 marginTop: '5px', letterSpacing: '0.08em',
                 textTransform: 'uppercase',
                 fontFamily: "'Courier New', monospace",
@@ -197,11 +196,11 @@ export default function HeroSection() {
                 {label}
               </div>
             </div>
-          ))}
+          ))} */}
         </div>
       </div>
 
-      {/* ACM Logo — right side */}
+      {/* ACM Logo + play hint — right side */}
       <div
         ref={logoRef}
         style={{
@@ -210,8 +209,9 @@ export default function HeroSection() {
           marginLeft: 'auto',
           position: 'relative',
           display: 'flex',
+          flexDirection: 'column',
           alignItems: 'center',
-          justifyContent: 'center',
+          gap: '20px',
         }}
       >
         <img
@@ -219,6 +219,50 @@ export default function HeroSection() {
           alt="ACM IGDTUW"
           style={{ width: '100%', height: 'auto' }}
         />
+
+        {/* Play button — exits with logo on scroll, hidden by CSS when playing */}
+        <button
+          onClick={() => setPlaying(true)}
+          style={{
+            display: 'flex', alignItems: 'center', gap: '8px',
+            background: 'rgba(4,8,15,0.72)',
+            border: '1px solid rgba(0,196,224,0.28)',
+            borderRadius: '100px',
+            padding: '7px 18px',
+            backdropFilter: 'blur(12px)',
+            color: '#00c4e0',
+            fontSize: '11px',
+            letterSpacing: '0.1em',
+            textTransform: 'uppercase',
+            fontFamily: "'Courier New', monospace",
+            whiteSpace: 'nowrap',
+            animation: 'acm-fade-up 0.8s ease both 1s',
+            cursor: 'pointer',
+            transition: 'background 0.2s ease, border-color 0.2s ease',
+          }}
+          onMouseEnter={e => {
+            e.currentTarget.style.background = 'rgba(0,130,170,0.18)'
+            e.currentTarget.style.borderColor = 'rgba(0,196,224,0.55)'
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.background = 'rgba(4,8,15,0.72)'
+            e.currentTarget.style.borderColor = 'rgba(0,196,224,0.28)'
+          }}
+        >
+          <span style={{
+            display: 'inline-block', width: '6px', height: '6px',
+            borderRadius: '50%', background: '#00c4e0',
+            boxShadow: '0 0 8px #00c4e0',
+            animation: 'acm-pulse 1.6s ease-in-out infinite',
+          }} />
+          ← → Play Breakout
+          <span style={{
+            display: 'inline-block', width: '6px', height: '6px',
+            borderRadius: '50%', background: '#00c4e0',
+            boxShadow: '0 0 8px #00c4e0',
+            animation: 'acm-pulse 1.6s ease-in-out infinite 0.5s',
+          }} />
+        </button>
       </div>
 
       {/* Scroll indicator */}
@@ -228,7 +272,7 @@ export default function HeroSection() {
           position: 'absolute', bottom: '36px', left: '50%',
           transform: 'translateX(-50%)',
           display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px',
-          color: 'rgba(232,244,248,0.35)', fontSize: '10px',
+          color: 'rgba(255,255,255,0.3)', fontSize: '10px',
           letterSpacing: '0.18em', textTransform: 'uppercase',
           fontFamily: "'Courier New', monospace",
         }}
@@ -236,7 +280,7 @@ export default function HeroSection() {
         scroll
         <div style={{
           width: '1px', height: '44px',
-          background: 'linear-gradient(to bottom, rgba(0,212,255,0.8), transparent)',
+          background: 'linear-gradient(to bottom, rgba(0,196,224,0.8), transparent)',
           animation: 'acm-scroll-line 1.6s ease-in-out infinite',
         }} />
       </div>

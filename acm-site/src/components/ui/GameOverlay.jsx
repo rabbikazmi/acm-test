@@ -3,69 +3,20 @@ import { setPlaying } from '../../lib/store'
 
 export default function GameOverlay() {
   const [playing, setPlayingState] = useState(false)
-  const [scrolled, setScrolled]    = useState(false)
 
-  /* Listen for play-mode changes and scroll */
   useEffect(() => {
-    const handler  = (e) => {
+    const handler = (e) => {
       setPlayingState(e.detail.playing)
       document.body.dataset.playing = e.detail.playing ? 'true' : 'false'
     }
-    const onScroll = () => setScrolled(window.scrollY > 40)
     window.addEventListener('acm-playing', handler)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => {
-      window.removeEventListener('acm-playing', handler)
-      window.removeEventListener('scroll', onScroll)
-    }
+    return () => window.removeEventListener('acm-playing', handler)
   }, [])
 
   const goBack = () => setPlaying(false)
 
   return (
     <>
-      {/* ── Play hint — shown on hero when NOT in play mode and not scrolled ── */}
-      {!playing && !scrolled && (
-        <div
-          aria-hidden="true"
-          style={{
-            position: 'fixed',
-            bottom: '88px',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            zIndex: 200,
-            pointerEvents: 'none',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '10px',
-            background: 'rgba(4,8,15,0.72)',
-            border: '1px solid rgba(0,212,255,0.28)',
-            borderRadius: '100px',
-            padding: '9px 22px',
-            backdropFilter: 'blur(12px)',
-            color: '#00d4ff',
-            fontSize: '12px',
-            letterSpacing: '0.1em',
-            textTransform: 'uppercase',
-            fontFamily: "'Courier New', monospace",
-            animation: 'acm-fade-up 0.6s ease both',
-            whiteSpace: 'nowrap',
-          }}
-        >
-          <span style={{
-            display: 'inline-block', width: '7px', height: '7px',
-            borderRadius: '50%', background: '#00d4ff',
-            boxShadow: '0 0 8px #00d4ff',
-          }} />
-          ← → Arrow keys to play Breakout
-          <span style={{
-            display: 'inline-block', width: '7px', height: '7px',
-            borderRadius: '50%', background: '#00d4ff',
-            boxShadow: '0 0 8px #00d4ff',
-          }} />
-        </div>
-      )}
-
       {/* ── Back button — shown when zoomed in to play ── */}
       {playing && (
         <>
@@ -81,28 +32,28 @@ export default function GameOverlay() {
               alignItems: 'center',
               gap: '8px',
               background: 'rgba(4,8,15,0.88)',
-              border: '1px solid rgba(0,212,255,0.4)',
+              border: '1px solid rgba(0,196,224,0.4)',
               borderRadius: '10px',
               padding: '10px 20px',
-              color: '#00d4ff',
+              color: '#00c4e0',
               fontSize: '13px',
               fontWeight: 700,
               letterSpacing: '0.04em',
               fontFamily: 'Inter, system-ui, sans-serif',
               cursor: 'pointer',
               backdropFilter: 'blur(16px)',
-              boxShadow: '0 0 20px rgba(0,212,255,0.2)',
+              boxShadow: '0 0 20px rgba(0,196,224,0.2)',
               transition: 'all 0.2s ease',
               animation: 'acm-fade-up 0.35s ease both',
             }}
             onMouseEnter={e => {
               e.currentTarget.style.background = 'rgba(0,130,170,0.25)'
-              e.currentTarget.style.boxShadow  = '0 0 32px rgba(0,212,255,0.4)'
+              e.currentTarget.style.boxShadow  = '0 0 32px rgba(0,196,224,0.4)'
               e.currentTarget.style.transform   = 'translateY(-2px)'
             }}
             onMouseLeave={e => {
               e.currentTarget.style.background = 'rgba(4,8,15,0.88)'
-              e.currentTarget.style.boxShadow  = '0 0 20px rgba(0,212,255,0.2)'
+              e.currentTarget.style.boxShadow  = '0 0 20px rgba(0,196,224,0.2)'
               e.currentTarget.style.transform   = 'translateY(0)'
             }}
           >
@@ -118,7 +69,7 @@ export default function GameOverlay() {
               right: '28px',
               zIndex: 1200,
               pointerEvents: 'none',
-              color: 'rgba(232,244,248,0.35)',
+              color: 'rgba(255,255,255,0.35)',
               fontSize: '11px',
               fontFamily: "'Courier New', monospace",
               letterSpacing: '0.1em',
@@ -140,7 +91,7 @@ export default function GameOverlay() {
               pointerEvents: 'none',
               display: 'flex',
               gap: '18px',
-              color: 'rgba(232,244,248,0.4)',
+              color: 'rgba(255,255,255,0.4)',
               fontSize: '11px',
               fontFamily: "'Courier New', monospace",
               letterSpacing: '0.08em',

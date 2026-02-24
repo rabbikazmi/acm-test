@@ -5,12 +5,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 const benefits = [
-  { icon: '⬡', text: 'Access to exclusive workshops & bootcamps' },
-  { icon: '⬡', text: 'Mentorship from industry professionals' },
-  { icon: '⬡', text: 'Networking with 200+ tech-driven peers' },
-  { icon: '⬡', text: 'Priority access to hackathons & competitions' },
-  { icon: '⬡', text: 'Collaborative projects that build real skills' },
-  { icon: '⬡', text: 'Lifetime access to our alumni network' },
+  {text: 'Build projects and do research that matters' },
+  {text: 'Mentorship from seniors and professionals' },
+  {text: 'Networking with passionate, tech-driven peers' }
 ]
 
 export default function CTASection() {
@@ -42,7 +39,7 @@ export default function CTASection() {
 
       // Pulse the CTA button
       gsap.to('[data-cta-btn]', {
-        boxShadow: '0 0 60px rgba(0,212,255,0.6), 0 0 120px rgba(0,130,170,0.3)',
+        boxShadow: '0 0 60px rgba(0,196,224,0.6), 0 0 120px rgba(0,130,170,0.3)',
         yoyo: true, repeat: -1, duration: 1.8, ease: 'sine.inOut',
         scrollTrigger: { trigger: '[data-cta-btn]', start: 'top 85%' },
       })
@@ -100,7 +97,7 @@ export default function CTASection() {
               width: `${3 + Math.random() * 5}px`,
               height: `${3 + Math.random() * 5}px`,
               borderRadius: '50%',
-              background: i % 3 === 0 ? '#0082aa' : i % 3 === 1 ? '#00d4ff' : '#7B4FFF',
+              background: i % 3 === 0 ? '#0082aa' : i % 3 === 1 ? '#00c4e0' : '#005f7f',
               opacity: 0.5,
               boxShadow: `0 0 10px currentColor`,
               filter: `blur(${Math.random() * 2}px)`,
@@ -126,13 +123,12 @@ export default function CTASection() {
           fontSize: '11px', letterSpacing: '0.14em',
           textTransform: 'uppercase', color: '#0082aa', marginBottom: '16px',
         }}>
-          Be part of the story
         </p>
 
         <h2 data-cta-item style={{
           fontSize: 'clamp(40px, 6vw, 80px)', fontWeight: 800,
           lineHeight: 1.02, letterSpacing: '-0.045em',
-          color: '#e8f4f8', margin: '0 0 20px',
+          color: '#ffffff', margin: '0 0 20px',
         }}>
           Ready to{' '}
           <span style={{ color: '#0082aa' }}>
@@ -142,11 +138,13 @@ export default function CTASection() {
         </h2>
 
         <p data-cta-item style={{
-          color: 'rgba(232,244,248,0.62)', fontSize: 'clamp(15px, 1.7vw, 18px)',
+          color: 'rgba(255,255,255,0.62)', fontSize: 'clamp(15px, 1.7vw, 18px)',
           lineHeight: 1.75, margin: '0 0 40px', maxWidth: '560px', marginLeft: 'auto', marginRight: 'auto',
         }}>
           Join ACM IGDTUW and become part of a community that builds, competes,
-          and innovates together — turning ideas into impact.
+          and innovates together. 
+
+          <p data-cta-item style={{ color: '#0082aa' }}>We solve what matters.</p>
         </p>
 
         {/* Benefits */}
@@ -165,10 +163,10 @@ export default function CTASection() {
               borderRadius: '10px', padding: '12px 16px',
               backdropFilter: 'blur(8px)',
             }}>
-              <span style={{ color: '#00d4ff', fontSize: '14px', flexShrink: 0, marginTop: '1px' }}>
+              <span style={{ color: '#00c4e0', fontSize: '14px', flexShrink: 0, marginTop: '1px' }}>
                 {b.icon}
               </span>
-              <span style={{ color: 'rgba(232,244,248,0.65)', fontSize: '13px', lineHeight: 1.5 }}>
+              <span style={{ color: 'rgba(255,255,255,0.65)', fontSize: '13px', lineHeight: 1.5 }}>
                 {b.text}
               </span>
             </div>
@@ -206,7 +204,7 @@ export default function CTASection() {
             style={{
               display: 'inline-flex', alignItems: 'center', gap: '10px',
               background: 'rgba(255,255,255,0.04)',
-              color: '#e8f4f8', textDecoration: 'none',
+              color: '#ffffff', textDecoration: 'none',
               padding: '16px 32px', borderRadius: '12px',
               fontWeight: 600, fontSize: '15px', letterSpacing: '0.04em',
               border: '1px solid rgba(255,255,255,0.1)',
@@ -214,7 +212,7 @@ export default function CTASection() {
               transition: 'all 0.2s ease',
             }}
             onMouseEnter={e => {
-              e.currentTarget.style.borderColor = 'rgba(0,212,255,0.4)'
+              e.currentTarget.style.borderColor = 'rgba(0,196,224,0.4)'
               e.currentTarget.style.background = 'rgba(0,130,170,0.08)'
               e.currentTarget.style.transform = 'translateY(-2px)'
             }}
@@ -235,19 +233,19 @@ export default function CTASection() {
           borderTop: '1px solid rgba(255,255,255,0.07)',
         }}>
           {[
-            { label: 'GitHub',    href: '#' },
-            { label: 'LinkedIn',  href: '#' },
-            { label: 'Instagram', href: '#' },
-            { label: 'Twitter',   href: '#' },
+            { label: 'GitHub',    href: 'https://github.com/acmigdtuw' },
+            { label: 'LinkedIn',  href: 'https://www.linkedin.com/company/acm-student-chapter-igdtuw/posts/?feedView=all' },
+            { label: 'Instagram', href: 'https://www.instagram.com/acm_igdtuw/' },
+            { label: 'X',   href: 'https://x.com/AcmIgdtuw' },
           ].map(({ label, href }) => (
             <a key={label} href={href} style={{
-              color: 'rgba(232,244,248,0.35)', fontSize: '12px',
+              color: 'rgba(255,255,255,0.8)', fontSize: '12px',
               textDecoration: 'none', letterSpacing: '0.06em',
               fontFamily: "'Courier New', monospace",
               transition: 'color 0.2s ease',
             }}
-            onMouseEnter={e => e.currentTarget.style.color = '#00d4ff'}
-            onMouseLeave={e => e.currentTarget.style.color = 'rgba(232,244,248,0.35)'}
+            onMouseEnter={e => e.currentTarget.style.color = '#00c4e0'}
+            onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.35)'}
             >
               {label}
             </a>
@@ -256,7 +254,7 @@ export default function CTASection() {
 
         {/* Footer note */}
         <p style={{
-          color: 'rgba(232,244,248,0.2)', fontSize: '11px',
+          color: 'rgba(255,255,255,0.8)', fontSize: '11px',
           marginTop: '32px', fontFamily: "'Courier New', monospace",
           letterSpacing: '0.06em',
         }}>
