@@ -6,7 +6,7 @@ import { setPlaying } from '../../lib/store'
 gsap.registerPlugin(ScrollTrigger)
 
 // Update this after deploying the POTD app to Vercel
-const POTD_URL = 'https://potd.acmigdtuw.com'
+const POTD_URL = 'https://acmigdtuw-potd.vercel.app/'
 
 const stats = [
   { value: '200+', label: 'Members'  },
