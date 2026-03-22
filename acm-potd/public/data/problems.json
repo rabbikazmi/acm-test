@@ -6,8 +6,8 @@
       "isActive": true,
       "phases": {
         "beginner":     { "startDate": "2026-03-22", "endDate": "2026-04-25" },
-        "intermediate": { "startDate": "2026-02-01", "endDate": "2026-02-28" },
-        "advanced":     { "startDate": "2026-03-01", "endDate": "2026-03-31" }
+        "intermediate": { "startDate": "2026-03-22", "endDate": "2026-04-25" },
+        "advanced":     { "startDate": "2026-03-22", "endDate": "2026-03-25" }
       }
     }
   ],
@@ -22,6 +22,30 @@
       "difficulty": "Easy",
       "problemLink": "https://leetcode.com/problems/remove-duplicates-from-sorted-array/",
       "solutionLink": "https://www.notion.so/Remove-Duplicates-From-Sorted-Array-eac00411d52183eebd9a01185d132667",
+      "status": "published"
+    }
+    ,{
+      "id": "sp26-b-2",
+      "eventId": "spring-2026",
+      "phase": "intermediate",
+      "day": 1,
+      "date": "2026-03-22",
+      "title": "3 sum",
+      "difficulty": "Intermediate",
+      "problemLink": "https://leetcode.com/problems/3sum/",
+      "solutionLink": "https://www.notion.so/3-Sum-cde00411d521820d842c810118fca8d8?source=copy_link",
+      "status": "published"
+    }
+    ,{
+      "id": "sp26-b-3",
+      "eventId": "spring-2026",
+      "phase": "advanced",
+      "day": 1,
+      "date": "2026-03-22",
+      "title": "Trapping Rain Water",
+      "difficulty": "hard",
+      "problemLink": "https://leetcode.com/problems/trapping-rain-water/",
+      "solutionLink": "https://www.notion.so/Trapping-Rain-Water-ebf00411d52182619d130122adfc5c46?source=copy_link",
       "status": "published"
     }
   ]
