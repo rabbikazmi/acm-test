@@ -3,7 +3,7 @@ import Navbar       from './components/Navbar'
 import Home         from './pages/Home'
 import EventPhase   from './pages/EventPhase'
 import ProblemDetail from './pages/ProblemDetail'
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/react"
 
 export default function App() {
   return (
