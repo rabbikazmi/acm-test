@@ -78,7 +78,7 @@ export default function ProblemCard({ problem, showPhase = false }) {
             onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.2)'}
             aria-label={`Detail view for ${title}`}
           >
-            ↗
+            
           </Link>
         </div>
       </div>
