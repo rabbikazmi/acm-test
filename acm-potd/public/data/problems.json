@@ -49,7 +49,45 @@
       "status": "published"
     }
   ],
+
+  
   "upcomingProblems": [
+        {
+      "id": "sp26-b-4",
+      "eventId": "spring-2026",
+      "phase": "beginner",
+      "day": 3,
+      "date": "2026-03-23",
+      "title": "2 Sum",
+      "difficulty": "Easy",
+      "problemLink": "https://leetcode.com/problems/two-sum/",
+      "solutionLink": "https://www.notion.so/Two-Sum-cd600411d5218228840c0149db47bc66?source=copy_link",
+      "status": "draft"
+    },
+        {
+      "id": "sp26-b-4",
+      "eventId": "spring-2026",
+      "phase": "intermediate",
+      "day": 3,
+      "date": "2026-03-23",
+      "title": "Subarray Sum Equals K",
+      "difficulty": "Medium",
+      "problemLink": "https://leetcode.com/problems/subarray-sum-equals-k/description/",
+      "solutionLink": "https://www.notion.so/Subarray-Sum-Equals-K-32b00411d52180c7b184e0327a4e2771?source=copy_link",
+      "status": "draft"
+    },
+        {
+      "id": "sp26-b-4",
+      "eventId": "spring-2026",
+      "phase": "advanced",
+      "day": 3,
+      "date": "2026-03-23",
+      "title": "First Missing Positive",
+      "difficulty": "Hard",
+      "problemLink": "https://leetcode.com/problems/first-missing-positive/description/",
+      "solutionLink": "https://www.notion.so/First-Missing-Positive-32b00411d52180c2b35dd193b5e97504?source=copy_link",
+      "status": "draft"
+    },
     {
       "id": "sp26-b-4",
       "eventId": "spring-2026",
