@@ -1,6 +1,7 @@
 export function getScheduledProblems(problems, startDateString) {
   // IST is UTC+5:30
   const IST_OFFSET_MS = 5.5 * 60 * 60 * 1000;
+  const MS_PER_DAY = 86400000;
   
   // Parse start date (March 22, 2026 00:00:00 UTC)
   const startDateUTC = new Date(startDateString);
@@ -8,16 +9,17 @@ export function getScheduledProblems(problems, startDateString) {
   // Get current time
   const nowUTC = new Date();
   
-  // Convert both to IST and get milliseconds since midnight IST
+  // Convert to IST times
   const startIST = new Date(startDateUTC.getTime() + IST_OFFSET_MS);
   const nowIST = new Date(nowUTC.getTime() + IST_OFFSET_MS);
   
-  // Calculate midnight IST for each
-  const startMidnightIST = Math.floor(startDateUTC.getTime() / 86400000) * 86400000 + IST_OFFSET_MS;
-  const nowMidnightIST = Math.floor(nowUTC.getTime() / 86400000) * 86400000 + IST_OFFSET_MS;
+  // Calculate how many complete days have passed since start in IST timezone
+  // Get the IST date at midnight (00:00:00 IST)
+  const startDateAtMidnightIST = new Date(startIST.getFullYear(), startIST.getMonth(), startIST.getDate());
+  const nowDateAtMidnightIST = new Date(nowIST.getFullYear(), nowIST.getMonth(), nowIST.getDate());
   
-  // Days since start
-  const daysDiff = Math.floor((nowMidnightIST - startMidnightIST) / 86400000);
+  // Days since start (0-indexed)
+  const daysDiff = Math.floor((nowDateAtMidnightIST.getTime() - startDateAtMidnightIST.getTime()) / MS_PER_DAY);
 
   return problems
     .map((prob) => {
