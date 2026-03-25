@@ -6323,6 +6323,6 @@ public:
 `
   };
 
-  return solutions[title] || `# ${title}\n\n(Solution content coming soon)`;
+  return specificSolutions[title] || `# ${title}\n\n(Solution content coming soon)`;
 }
 export { getSolution };
