@@ -6325,3 +6325,4 @@ public:
 
   return solutions[title] || `# ${title}\n\n(Solution content coming soon)`;
 }
+export { getSolution };
