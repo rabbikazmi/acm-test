@@ -11,9 +11,10 @@ export default function App() {
       <Navbar />
       <main>
         <Routes>
-          <Route path="/"                                    element={<Home />} />
-          <Route path="/event/:eventId"                      element={<EventPhase />} />
-          <Route path="/event/:eventId/day/:day"             element={<ProblemDetail />} />
+          <Route path="/"                                           element={<Home />} />
+          <Route path="/event/:eventId"                            element={<EventPhase />} />
+          <Route path="/event/:eventId/:phase"                     element={<EventPhase />} />
+          <Route path="/event/:eventId/:phase/day/:day"            element={<ProblemDetail />} />
         </Routes>
       </main>
       <Analytics />

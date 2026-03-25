@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+import { potdData, EVENT_START_DATE } from '../data/potdData'
+import { getScheduledProblems } from '../lib/scheduler'
 
 export function useProblems() {
   const [data,    setData]    = useState(null)
@@ -6,10 +8,36 @@ export function useProblems() {
   const [error,   setError]   = useState(null)
 
   useEffect(() => {
-    fetch('/data/problems.json')
-      .then(r => { if (!r.ok) throw new Error('Failed to load problems'); return r.json() })
-      .then(d => { setData(d); setLoading(false) })
-      .catch(e => { setError(e.message); setLoading(false) })
+    const updateProblems = () => {
+      try {
+        const processedProblems = getScheduledProblems(potdData, EVENT_START_DATE);
+
+        setData({
+          events: [
+            {
+              id: "spring-2026",
+              name: "Spring 2026",
+              isActive: true,
+              phases: {
+                beginner:     { startDate: EVENT_START_DATE, endDate: "2026-04-25T23:59:59" },
+                intermediate: { startDate: EVENT_START_DATE, endDate: "2026-04-25T23:59:59" },
+                advanced:     { startDate: EVENT_START_DATE, endDate: "2026-04-25T23:59:59" }
+              }
+            }
+          ],
+          problems: processedProblems
+        });
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+
+    updateProblems();
+    const interval = setInterval(updateProblems, 10000);
+
+    return () => clearInterval(interval);
   }, [])
 
   // Returns the active event, or the first one if none is flagged active

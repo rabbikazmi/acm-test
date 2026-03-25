@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom'
 import { useProblems } from '../hooks/useProblems'
 import ProblemCard from '../components/ProblemCard'
+import Markdown from 'react-markdown'
 
 const PHASE_LABELS = {
   beginner:     'Beginner',
@@ -63,7 +64,24 @@ export default function ProblemDetail() {
       </nav>
 
       {/* Problem card — full width, detail view */}
-      <ProblemCard problem={problem} showPhase />
+      <ProblemCard problem={problem} showPhase hideViewSolution />
+
+      {/* Solution Section */}
+      {problem.solution && (
+        <div style={{
+          marginTop: 32,
+          padding: 24,
+          background: 'rgba(255,255,255,0.02)',
+          border: '1px solid rgba(255,255,255,0.05)',
+          borderRadius: 12,
+          color: '#e2e8f0',
+          lineHeight: 1.6
+        }}>
+          <div className="markdown-body">
+            <Markdown>{problem.solution}</Markdown>
+          </div>
+        </div>
+      )}
 
       {/* Navigation between days */}
       <DayNav eventId={eventId} phase={phase} day={Number(day)} data={data} />
