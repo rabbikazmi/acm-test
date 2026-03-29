@@ -14,9 +14,9 @@ export function getScheduledProblems(problems, startDateString) {
   const nowIST = new Date(nowUTC.getTime() + IST_OFFSET_MS);
   
   // Calculate how many complete days have passed since start in IST timezone
-  // Get the IST date at midnight (00:00:00 IST)
-  const startDateAtMidnightIST = new Date(startIST.getFullYear(), startIST.getMonth(), startIST.getDate());
-  const nowDateAtMidnightIST = new Date(nowIST.getFullYear(), nowIST.getMonth(), nowIST.getDate());
+  // Get the IST date at midnight (00:00:00 IST) using UTC to avoid timezone issues
+  const startDateAtMidnightIST = new Date(Date.UTC(startIST.getUTCFullYear(), startIST.getUTCMonth(), startIST.getUTCDate()));
+  const nowDateAtMidnightIST = new Date(Date.UTC(nowIST.getUTCFullYear(), nowIST.getUTCMonth(), nowIST.getUTCDate()));
   
   // Days since start (0-indexed)
   const daysDiff = Math.floor((nowDateAtMidnightIST.getTime() - startDateAtMidnightIST.getTime()) / MS_PER_DAY);
