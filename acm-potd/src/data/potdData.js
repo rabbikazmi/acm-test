@@ -90,7 +90,7 @@ export const potdData = [
   ...generateDay(11, 
     { title: "Merge Two Sorted Lists", link: makeLink("Merge Two Sorted Lists") },
     { title: "Sort List", link: makeLink("Sort List") },
-    { title: "All O'one Data Structure", link: makeLink("All O'one Data Structure") }
+    { title: "All O'one Data Structure", link: "https://leetcode.com/problems/all-oone-data-structure/" }
   ),
   ...generateDay(12, 
     { title: "Remove Duplicates from Sorted List", link: makeLink("Remove Duplicates from Sorted List") },
