@@ -193,7 +193,7 @@ export const potdData = [
     { title: "Sudoku Solver", link: makeLink("Sudoku Solver") }
   ),
   ...generateDay(32, 
-    { title: "Pascal's Triangle", link: makeLink("Pascal's Triangle") },
+    { title: "Pascal's Triangle", link: makeLink("Pascals Triangle") },
     { title: "Longest Increasing Subsequence", link: makeLink("Longest Increasing Subsequence") },
     { title: "Burst Balloons", link: makeLink("Burst Balloons") }
   ),
