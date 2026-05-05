@@ -17,7 +17,7 @@ export function useProblems() {
             {
               id: "spring-2026",
               name: "Spring 2026",
-              isActive: true,
+              isActive: false,
               phases: {
                 beginner:     { startDate: EVENT_START_DATE, endDate: "2026-04-25T23:59:59" },
                 intermediate: { startDate: EVENT_START_DATE, endDate: "2026-04-25T23:59:59" },
