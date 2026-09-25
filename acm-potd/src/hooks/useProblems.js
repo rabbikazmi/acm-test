@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { potdData, EVENT_START_DATE } from '../data/potdData'
+import { springPotdData, EVENT_START_DATE as SPRING_START_DATE } from '../data/springPotdData'
 import { getScheduledProblems } from '../lib/scheduler'
 
 export function useProblems() {
@@ -10,7 +11,10 @@ export function useProblems() {
   useEffect(() => {
     const updateProblems = () => {
       try {
-        const processedProblems = getScheduledProblems(potdData, EVENT_START_DATE);
+        const processedProblems = [
+          ...getScheduledProblems(springPotdData, SPRING_START_DATE),
+          ...getScheduledProblems(potdData.filter(problem => problem.eventId === 'autumn-2026-cf'), EVENT_START_DATE),
+        ];
 
         setData({
           events: [
@@ -19,9 +23,19 @@ export function useProblems() {
               name: "Spring 2026",
               isActive: false,
               phases: {
-                beginner:     { startDate: EVENT_START_DATE, endDate: "2026-04-25T23:59:59" },
-                intermediate: { startDate: EVENT_START_DATE, endDate: "2026-04-25T23:59:59" },
-                advanced:     { startDate: EVENT_START_DATE, endDate: "2026-04-25T23:59:59" }
+                beginner:     { startDate: SPRING_START_DATE, endDate: "2026-04-25T23:59:59Z" },
+                intermediate: { startDate: SPRING_START_DATE, endDate: "2026-04-25T23:59:59Z" },
+                advanced:     { startDate: SPRING_START_DATE, endDate: "2026-04-25T23:59:59Z" }
+              }
+            },
+            {
+              id: "autumn-2026-cf",
+              name: "Autumn 2026",
+              isActive: true,
+              phases: {
+                beginner:     { startDate: EVENT_START_DATE, endDate: "2026-12-01T23:59:59Z" },
+                intermediate: { startDate: EVENT_START_DATE, endDate: "2026-12-01T23:59:59Z" },
+                advanced:     { startDate: EVENT_START_DATE, endDate: "2026-12-01T23:59:59Z" }
               }
             }
           ],

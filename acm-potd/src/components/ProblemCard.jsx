@@ -23,7 +23,7 @@ function formatDate(dateStr) {
 }
 
 export default function ProblemCard({ problem, showPhase = false, hideViewSolution = false }) {
-  const { eventId, phase, day, date, title, problemLink, solutionLink } = problem
+  const { eventId, phase, day, date, title, problemLink, solutionLink, platform, rating } = problem
   const today    = isToday(date)
   const colors   = PHASE_COLORS[phase] ?? PHASE_COLORS.beginner
 
@@ -64,6 +64,11 @@ export default function ProblemCard({ problem, showPhase = false, hideViewSoluti
           <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--c-teal)' }}>
             Day {day}
           </span>
+          {platform && (
+            <span style={{ fontSize: 11, color: 'var(--c-muted)' }}>
+              {platform}{rating ? ` · ${rating}` : ''}
+            </span>
+          )}
         </div>
 
         {/* Date + detail link */}
