@@ -5,7 +5,7 @@ export const EVENT_START_DATE = "2026-10-01T00:00:00Z";
 function generateDay(day, beginner, intermediate, advanced) {
   const mk = (code, phase, p) => ({
     id: `cfa26-${code}-${day}`, eventId: "autumn-2026-cf", phase, day,
-    title: p.title, rating: p.rating, platform: "Codeforces", problemLink: p.link, solutionLink: "#"
+    title: p.title, rating: p.rating, platform: "Codeforces", problemLink: p.link
   });
   return [mk("b","beginner",beginner), mk("i","intermediate",intermediate), mk("a","advanced",advanced)];
 }

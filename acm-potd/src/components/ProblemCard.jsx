@@ -24,6 +24,7 @@ function formatDate(dateStr) {
 
 export default function ProblemCard({ problem, showPhase = false, hideViewSolution = false }) {
   const { eventId, phase, day, date, title, problemLink, solutionLink, platform, rating } = problem
+  const showSolution = !hideViewSolution && eventId !== 'autumn-2026-cf'
   const today    = isToday(date)
   const colors   = PHASE_COLORS[phase] ?? PHASE_COLORS.beginner
 
@@ -109,7 +110,7 @@ export default function ProblemCard({ problem, showPhase = false, hideViewSoluti
         >
           Solve Problem →
         </a>
-        {!hideViewSolution && (
+        {showSolution && (
           <Link
             to={`/event/${eventId}/${phase}/day/${day}`}
             className="potd-btn-secondary"
